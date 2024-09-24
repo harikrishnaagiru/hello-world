@@ -1,24 +1,24 @@
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: valaxy-regapp
+  name: tomcat
   labels: 
-     app: regapp
+     app: panjesha
 
 spec:
   replicas: 2 
   selector:
     matchLabels:
-      app: regapp
+      app: panjesha
 
   template:
     metadata:
       labels:
-        app: regapp
+        app: panjesha
     spec:
       containers:
-      - name: regapp
-        image: valaxy/regapp
+      - name: panjesha
+        image: harikrishna1/tomcat:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
