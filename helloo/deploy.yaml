@@ -1,1 +1,29 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: tomcat
+  labels: 
+     app: panjesha
 
+spec:
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: panjesha
+
+  template:
+    metadata:
+      labels:
+        app: panjesha
+    spec:
+      containers:
+      - name: panjesha
+        image: harikrishna1/tomcat:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
